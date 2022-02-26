@@ -14,7 +14,7 @@ test('optional @', () => {
 })
 
 test('array end glue', () => {
-  expect(tq('base text', '.split(" ")')).toBe('base\ntext')
+  expect(tq('base text', '@.split(" ")')).toBe('base\ntext')
 })
 
 test('line sign query', () => {
