@@ -5,11 +5,11 @@ line2
 line3`
 
 test('text query', () => {
-  expect(tq('base text', `@.split("\n").join(",")`)).toBe('base,text')
+  expect(tq('base text', `@.split(" ").join(",")`)).toBe('base,text')
   expect(tq('base text', `@.replace("base", "changed")`)).toBe('changed text')
 })
 
-test('text query', () => {
+test('optional @', () => {
   expect(tq('base text', `.split(" ").join(",")`)).toBe('base,text')
 })
 
