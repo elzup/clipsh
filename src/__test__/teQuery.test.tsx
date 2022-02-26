@@ -17,6 +17,10 @@ test('array end glue', () => {
   expect(tq('base text', '@.split(" ")')).toBe('base\ntext')
 })
 
+test('multiline eval', () => {
+  expect(tq(multilineText, '@')).toBe(multilineText)
+})
+
 test('line sign query', () => {
   expect(tq(multilineText, '$.substring(4, 5)')).toBe('1\n2\n3')
   expect(

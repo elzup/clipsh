@@ -3,12 +3,15 @@ const evalQueryBuild = (embed: string, query: string) => {
 }
 
 const runEval = (embed: string, query: string) => {
-  try {
-    const x = evalQueryBuild(embed, query)
+  if (!query.includes('@')) throw Error('Invalid query: @ sign not find')
 
+  const _$text = embed
+  const x = query.replace('@', '_$text')
+
+  try {
     return eval(x)
   } catch (_e) {
-    return 'error'
+    return `error ${x}`
   }
 }
 
