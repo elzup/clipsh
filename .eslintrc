@@ -1,3 +1,6 @@
 {
-  "extends": ["nzap", "nzap/tsx"]
+  "extends": ["nzap", "nzap/tsx", "nzap/jest"],
+  "rules": {
+    "no-eval": "off"
+  }
 }
