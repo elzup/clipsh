@@ -1,6 +1,6 @@
-const evalQueryBuild = (embed: string, query: string) => {
-  return query.replace('@', `'${embed.replace(/'/g, "\\'")}'`)
-}
+import * as funcs from './teQueryFuncs'
+
+const { _count, _lcount } = funcs
 
 const runEval = (embed: string, query: string) => {
   if (!query.includes('@')) throw Error('Invalid query: @ sign not find')

@@ -31,3 +31,8 @@ test('line sign query', () => {
     )
   ).toBe('hoge\nfuga')
 })
+
+test('queryFunc _count', () => {
+  expect(tq('abcde', `_count(@)`)).toBe('5')
+  expect(tq('__\n__\n__', `_lcount(@)`)).toBe('3')
+})
