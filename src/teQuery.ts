@@ -20,5 +20,6 @@ export function teQuery(text: string, query: string): string {
       .map((line) => teQuery(line, query.replace('$', '@')))
       .join('\n')
   }
+  if (!query.includes('@')) return teQuery(text, `@` + query)
   return runEval(text, query)
 }
