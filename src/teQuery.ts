@@ -15,7 +15,10 @@ const runEval = (embed: string, query: string) => {
 
 export function teQuery(text: string, query: string): string {
   if (query.includes('$')) {
-    return ''
+    return text
+      .split('\n')
+      .map((line) => teQuery(line, query.replace('$', '@')))
+      .join('\n')
   }
   return runEval(text, query)
 }

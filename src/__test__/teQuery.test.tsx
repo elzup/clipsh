@@ -18,7 +18,7 @@ test('array end glue', () => {
 })
 
 test('line sign query', () => {
-  expect(tq(multilineText, '$.substr(-1)')).toBe('1\n2\n3\n')
+  expect(tq(multilineText, '$.substring(4, 5)')).toBe('1\n2\n3')
   expect(
     tq(
       ` hoge
