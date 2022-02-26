@@ -15,6 +15,10 @@ const runEval = (embed: string, query: string) => {
   }
 }
 
+const isSingleFuncQuery = (query: string) =>
+  !query.includes('@') && !query.includes('.') && !query.includes('.')
+const isStartOptional = (query: string) => query.startsWith('.')
+
 export function teQuery(text: string, query: string, glue = '\n'): string {
   if (query.includes('$')) {
     return text
@@ -22,7 +26,9 @@ export function teQuery(text: string, query: string, glue = '\n'): string {
       .map((line) => teQuery(line, query.replace('$', '@')))
       .join(glue)
   }
-  if (!query.includes('@')) return teQuery(text, `@` + query)
+  if (isSingleFuncQuery(query)) return teQuery(text, query + '(@)')
+  if (isStartOptional(query)) return teQuery(text, `@` + query)
+
   const result = runEval(text, query)
 
   if (Array.isArray(result)) return result.join(glue)

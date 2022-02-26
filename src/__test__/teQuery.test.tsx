@@ -36,3 +36,7 @@ test('queryFunc _count', () => {
   expect(tq('abcde', `_count(@)`)).toBe('5')
   expect(tq('__\n__\n__', `_lcount(@)`)).toBe('3')
 })
+
+test('single func optional', () => {
+  expect(tq('abcde', `_count`)).toBe('5')
+})
